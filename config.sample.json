@@ -1,9 +1,9 @@
 {
-  "application_name": "FluffyChat",
+  "application_name": "Zom"
   "application_welcome_message": null,
-  "default_homeserver": "matrix.org",
-  "web_base_url": "https://fluffychat.im/web",
-  "privacy_url": "https://fluffychat.im/en/privacy.html",
+  "default_homeserver": "nang.zom.im",
+  "web_base_url": "https://web.nang.zom.im",
+  "privacy_url": "https://zom.im/privacy",
   "render_html": false,
   "hide_redacted_events": false,
   "hide_unknown_events": false
