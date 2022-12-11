@@ -721,7 +721,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "createAccountNow": "Create account now",
+  "createAccountNow": "Create an Account",
   "@createAccountNow": {
     "type": "text",
     "placeholders": {}
@@ -2973,6 +2973,31 @@
     "placeholders": {
       "number": {}
     }
+  },
+  "signIn": "Sign In",
+  "@signIn": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "signInMessage": "Sign into a existing account",
+  "@signInMessage": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "welcomeMessage": "WELCOME TO ZOM \n>>",
+  "@welcomeMessage": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "userNameSignupMessage": "Think of a unique username that you don't use anywhere else and doesn't contain personal information.",
+  "@userNameSignupMessage": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "passwordSignupMessage": "Make sure your password is a unique password you don't use anywhere else.",
+  "@passwordSignupMessage": {
+    "type": "text",
+    "placeholders": {}
   },
   "hideUnimportantStateEvents": "Hide unimportant state events",
   "doNotShowAgain": "Do not show again"

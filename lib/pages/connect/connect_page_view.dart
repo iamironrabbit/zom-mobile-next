@@ -1,13 +1,10 @@
-import 'dart:typed_data';
-
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pages/connect/connect_page.dart';
 import 'package:fluffychat/widgets/layouts/login_scaffold.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:matrix/matrix.dart';
+
 import 'sso_button.dart';
 
 class ConnectPageView extends StatelessWidget {
@@ -16,129 +13,28 @@ class ConnectPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final avatar = Matrix.of(context).loginAvatar;
     final identityProviders = controller.identityProviders;
     return LoginScaffold(
       appBar: AppBar(
-        leading: controller.loading ? null : const BackButton(),
-        automaticallyImplyLeading: !controller.loading,
-        centerTitle: true,
-        title: Text(
-          Matrix.of(context).getLoginClient().homeserver?.host ?? '',
-        ),
+        automaticallyImplyLeading: false,
       ),
       body: ListView(
         children: [
           if (Matrix.of(context).loginRegistrationSupported ?? false) ...[
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Center(
-                child: Stack(
-                  children: [
-                    Material(
-                      borderRadius: BorderRadius.circular(64),
-                      elevation: Theme.of(context)
-                              .appBarTheme
-                              .scrolledUnderElevation ??
-                          4,
-                      color: Colors.transparent,
-                      shadowColor: Theme.of(context).appBarTheme.shadowColor,
-                      clipBehavior: Clip.hardEdge,
-                      child: CircleAvatar(
-                        radius: 64,
-                        backgroundColor: Colors.white,
-                        child: avatar == null
-                            ? const Icon(
-                                Icons.person,
-                                color: Colors.black,
-                                size: 64,
-                              )
-                            : FutureBuilder<Uint8List>(
-                                future: avatar.readAsBytes(),
-                                builder: (context, snapshot) {
-                                  final bytes = snapshot.data;
-                                  if (bytes == null) {
-                                    return const CircularProgressIndicator
-                                        .adaptive();
-                                  }
-                                  return Image.memory(
-                                    bytes,
-                                    fit: BoxFit.cover,
-                                    width: 128,
-                                    height: 128,
-                                  );
-                                },
-                              ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: FloatingActionButton(
-                        mini: true,
-                        onPressed: controller.pickAvatar,
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
-                        child: const Icon(Icons.camera_alt_outlined),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: TextField(
-                controller: controller.usernameController,
-                onSubmitted: (_) => controller.signUp(),
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.account_box_outlined),
-                  hintText: L10n.of(context)!.chooseAUsername,
-                  errorText: controller.signupError,
-                  errorStyle: const TextStyle(color: Colors.orange),
-                ),
-              ),
-            ),
+            Image.asset('assets/login_wallpaper.png', width: double.infinity),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Hero(
                 tag: 'loginButton',
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Theme.of(context).colorScheme.primary,
-                    foregroundColor: Theme.of(context).colorScheme.onPrimary,
-                  ),
-                  onPressed: controller.loading ? () {} : controller.signUp,
+                child: TextButton(
+                  onPressed: controller.loading ? () {} : controller.signUpUser,
                   child: controller.loading
                       ? const LinearProgressIndicator()
-                      : Text(L10n.of(context)!.signUp),
+                      : Text(
+                          L10n.of(context)!.createAccountNow,
+                          style: const TextStyle(fontSize: 18),
+                        ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Divider(
-                      thickness: 1,
-                      color: Theme.of(context).dividerColor,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Text(
-                      L10n.of(context)!.or,
-                      style: const TextStyle(fontSize: 18),
-                    ),
-                  ),
-                  Expanded(
-                    child: Divider(
-                      thickness: 1,
-                      color: Theme.of(context).dividerColor,
-                    ),
-                  ),
-                ],
               ),
             ),
           ],
@@ -198,15 +94,14 @@ class ConnectPageView extends StatelessWidget {
               padding: const EdgeInsets.all(12.0),
               child: Hero(
                 tag: 'signinButton',
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        Theme.of(context).colorScheme.primaryContainer,
+                child: TextButton(
+                  style: TextButton.styleFrom(
                     foregroundColor:
-                        Theme.of(context).colorScheme.onPrimaryContainer,
+                        Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
                   onPressed: controller.loading ? () {} : controller.login,
-                  child: Text(L10n.of(context)!.login),
+                  child: Text(L10n.of(context)!.signInMessage,
+                      style: const TextStyle(fontSize: 16)),
                 ),
               ),
             ),

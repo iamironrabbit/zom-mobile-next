@@ -1,9 +1,7 @@
+import 'package:fluffychat/widgets/layouts/login_scaffold.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
-import 'package:fluffychat/widgets/layouts/login_scaffold.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 import 'login.dart';
 
 class LoginView extends StatelessWidget {
@@ -18,13 +16,7 @@ class LoginView extends StatelessWidget {
         leading: controller.loading ? null : const BackButton(),
         automaticallyImplyLeading: !controller.loading,
         centerTitle: true,
-        title: Text(
-          L10n.of(context)!.logInTo(Matrix.of(context)
-              .getLoginClient()
-              .homeserver
-              .toString()
-              .replaceFirst('https://', '')),
-        ),
+        title: Text(L10n.of(context)!.signIn),
       ),
       body: Builder(builder: (context) {
         return AutofillGroup(
@@ -39,14 +31,14 @@ class LoginView extends StatelessWidget {
                   onChanged: controller.checkWellKnownWithCoolDown,
                   controller: controller.usernameController,
                   textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.name,
                   autofillHints:
                       controller.loading ? null : [AutofillHints.username],
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.account_box_outlined),
                     errorText: controller.usernameError,
                     errorStyle: const TextStyle(color: Colors.orange),
-                    hintText: L10n.of(context)!.emailOrUsername,
+                    hintText: L10n.of(context)!.username,
                   ),
                 ),
               ),
@@ -95,45 +87,7 @@ class LoginView extends StatelessWidget {
                         : Text(L10n.of(context)!.login),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Divider(
-                        thickness: 1,
-                        color: Theme.of(context).dividerColor,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Text(
-                        L10n.of(context)!.or,
-                        style: const TextStyle(fontSize: 18),
-                      ),
-                    ),
-                    Expanded(
-                      child: Divider(
-                        thickness: 1,
-                        color: Theme.of(context).dividerColor,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: ElevatedButton(
-                  onPressed:
-                      controller.loading ? () {} : controller.passwordForgotten,
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Theme.of(context).colorScheme.error,
-                    backgroundColor: Theme.of(context).colorScheme.onError,
-                  ),
-                  child: Text(L10n.of(context)!.passwordForgotten),
-                ),
-              ),
+              )
             ],
           ),
         );

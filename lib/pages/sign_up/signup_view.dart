@@ -1,8 +1,7 @@
+import 'package:fluffychat/widgets/layouts/login_scaffold.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
-import 'package:fluffychat/widgets/layouts/login_scaffold.dart';
 import 'signup.dart';
 
 class SignupPageView extends StatelessWidget {
@@ -21,6 +20,27 @@ class SignupPageView extends StatelessWidget {
         key: controller.formKey,
         child: ListView(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: TextField(
+                readOnly: controller.loading,
+                autocorrect: false,
+                autofocus: true,
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.name,
+                autofillHints:
+                    controller.loading ? null : [AutofillHints.username],
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.account_box_outlined),
+                  errorStyle: const TextStyle(color: Colors.orange),
+                  hintText: L10n.of(context)!.username,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(L10n.of(context)!.userNameSignupMessage),
+            ),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: TextFormField(
@@ -68,27 +88,8 @@ class SignupPageView extends StatelessWidget {
                 ),
               ),
             Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: TextFormField(
-                readOnly: controller.loading,
-                autocorrect: false,
-                controller: controller.emailController,
-                keyboardType: TextInputType.emailAddress,
-                autofillHints:
-                    controller.loading ? null : [AutofillHints.username],
-                validator: controller.emailTextFieldValidator,
-                decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.mail_outlined),
-                  hintText: L10n.of(context)!.enterAnEmailAddress,
-                  errorText: controller.error,
-                  errorMaxLines: 4,
-                  errorStyle: TextStyle(
-                    color: controller.emailController.text.isEmpty
-                        ? Colors.orangeAccent
-                        : Colors.orange,
-                  ),
-                ),
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text(L10n.of(context)!.passwordSignupMessage),
             ),
             Hero(
               tag: 'loginButton',

@@ -1,7 +1,11 @@
+import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pages/connect/connect_page_view.dart';
+import 'package:fluffychat/utils/localized_exception_extension.dart';
+import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_web_auth/flutter_web_auth.dart';
 import 'package:future_loading_dialog/future_loading_dialog.dart';
@@ -9,12 +13,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:matrix/matrix.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:vrouter/vrouter.dart';
-
-import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pages/connect/connect_page_view.dart';
-import 'package:fluffychat/utils/localized_exception_extension.dart';
-import 'package:fluffychat/utils/platform_infos.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class ConnectPage extends StatefulWidget {
   const ConnectPage({Key? key}) : super(key: key);
@@ -112,6 +110,7 @@ class ConnectPageController extends State<ConnectPage> {
   bool get supportsLogin => _supportsFlow('m.login.password');
 
   void login() => VRouter.of(context).to('login');
+  void signUpUser() => VRouter.of(context).to('signup');
 
   Map<String, dynamic>? _rawLoginTypes;
 
