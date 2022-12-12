@@ -1,23 +1,11 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:desktop_drop/desktop_drop.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:file_picker_cross/file_picker_cross.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:future_loading_dialog/future_loading_dialog.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:matrix/matrix.dart';
-import 'package:record/record.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:vrouter/vrouter.dart';
-
 import 'package:fluffychat/pages/chat/chat_view.dart';
 import 'package:fluffychat/pages/chat/event_info_dialog.dart';
 import 'package:fluffychat/pages/chat/recording_dialog.dart';
@@ -26,6 +14,17 @@ import 'package:fluffychat/utils/matrix_sdk_extensions.dart/ios_badge_client_ext
 import 'package:fluffychat/utils/matrix_sdk_extensions.dart/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:future_loading_dialog/future_loading_dialog.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:matrix/matrix.dart';
+import 'package:record/record.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:vrouter/vrouter.dart';
+
 import '../../utils/account_bundles.dart';
 import '../../utils/localized_exception_extension.dart';
 import '../../utils/matrix_sdk_extensions.dart/matrix_file_extension.dart';
@@ -61,6 +60,7 @@ class ChatController extends State<Chat> {
   Timer? typingTimeout;
   bool currentlyTyping = false;
   bool dragging = false;
+  bool hasCallSupport = false;
 
   void onDragEntered(_) => setState(() => dragging = true);
 
