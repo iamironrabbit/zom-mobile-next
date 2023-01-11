@@ -435,7 +435,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3ZT43H8X97;
+				DEVELOPMENT_TEAM = 8GJ38542FU;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -451,7 +451,7 @@
 					"$(PROJECT_DIR)/Flutter",
 				);
 				MARKETING_VERSION = 0.32.1;
-				PRODUCT_BUNDLE_IDENTIFIER = info.guardianproject.zomapp.app;
+				PRODUCT_BUNDLE_IDENTIFIER = info.guardianproject.zomapp.app.next;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -574,7 +574,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3ZT43H8X97;
+				DEVELOPMENT_TEAM = 8GJ38542FU;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -590,7 +590,7 @@
 					"$(PROJECT_DIR)/Flutter",
 				);
 				MARKETING_VERSION = 0.32.1;
-				PRODUCT_BUNDLE_IDENTIFIER = info.guardianproject.zomapp.app;
+				PRODUCT_BUNDLE_IDENTIFIER = info.guardianproject.zomapp.app.next;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -607,7 +607,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3ZT43H8X97;
+				DEVELOPMENT_TEAM = 8GJ38542FU;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -623,7 +623,7 @@
 					"$(PROJECT_DIR)/Flutter",
 				);
 				MARKETING_VERSION = 0.32.1;
-				PRODUCT_BUNDLE_IDENTIFIER = info.guardianproject.zomapp.app;
+				PRODUCT_BUNDLE_IDENTIFIER = info.guardianproject.zomapp.app.next;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -643,7 +643,7 @@
 				CODE_SIGN_ENTITLEMENTS = "FluffyChat Share/FluffyChat Share.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3ZT43H8X97;
+				DEVELOPMENT_TEAM = 8GJ38542FU;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "FluffyChat Share/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
@@ -655,7 +655,7 @@
 				MARKETING_VERSION = 1.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "info.guardianproject.zomapp.app-Share";
+				PRODUCT_BUNDLE_IDENTIFIER = "info.guardianproject.zomapp.app.next-share";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -677,7 +677,7 @@
 				CODE_SIGN_ENTITLEMENTS = "FluffyChat Share/FluffyChat Share.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3ZT43H8X97;
+				DEVELOPMENT_TEAM = 8GJ38542FU;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "FluffyChat Share/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
@@ -688,7 +688,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "info.guardianproject.zomapp.app-Share";
+				PRODUCT_BUNDLE_IDENTIFIER = "info.guardianproject.zomapp.app.next-share";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -708,7 +708,7 @@
 				CODE_SIGN_ENTITLEMENTS = "FluffyChat Share/FluffyChat Share.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3ZT43H8X97;
+				DEVELOPMENT_TEAM = 8GJ38542FU;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "FluffyChat Share/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
@@ -719,7 +719,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "info.guardianproject.zomapp.app-Share";
+				PRODUCT_BUNDLE_IDENTIFIER = "info.guardianproject.zomapp.app.next-share";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
