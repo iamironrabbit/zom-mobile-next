@@ -9,6 +9,7 @@ import 'package:file_picker_cross/file_picker_cross.dart';
 import 'package:fluffychat/pages/chat/chat_view.dart';
 import 'package:fluffychat/pages/chat/event_info_dialog.dart';
 import 'package:fluffychat/pages/chat/recording_dialog.dart';
+import 'package:fluffychat/pages/sticker/custom_sticker_picker_dialog.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions.dart/event_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions.dart/ios_badge_client_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions.dart/matrix_locals.dart';
@@ -28,9 +29,10 @@ import 'package:vrouter/vrouter.dart';
 import '../../utils/account_bundles.dart';
 import '../../utils/localized_exception_extension.dart';
 import '../../utils/matrix_sdk_extensions.dart/matrix_file_extension.dart';
+import '../sticker/sticker.dart';
+import '../sticker/sticker_provider.dart';
 import 'send_file_dialog.dart';
 import 'send_location_dialog.dart';
-import 'sticker_picker_dialog.dart';
 
 class Chat extends StatefulWidget {
   final Widget? sideView;
@@ -61,6 +63,7 @@ class ChatController extends State<Chat> {
   bool currentlyTyping = false;
   bool dragging = false;
   bool hasCallSupport = false;
+  late Map<String, List<Sticker>> stickerPacks;
 
   void onDragEntered(_) => setState(() => dragging = true);
 
@@ -174,6 +177,10 @@ class ChatController extends State<Chat> {
 
   @override
   void initState() {
+    StickerProvider()
+        .getStickers(context)
+        .then((value) => {stickerPacks = value});
+
     scrollController.addListener(_updateScrollController);
     inputFocus.addListener(_inputFocusListener);
     super.initState();
@@ -377,16 +384,19 @@ class ChatController extends State<Chat> {
   }
 
   void sendStickerAction() async {
-    final sticker = await showModalBottomSheet<ImagePackImageContent>(
+    final sticker = await showModalBottomSheet<Sticker>(
       context: context,
       useRootNavigator: false,
-      builder: (c) => StickerPickerDialog(room: room!),
+      builder: (c) => CustomStickerPickerDialog(
+        stickerMap: stickerPacks,
+        room: room!,
+      ),
     );
     if (sticker == null) return;
     final eventContent = <String, dynamic>{
-      'body': sticker.body,
-      if (sticker.info != null) 'info': sticker.info,
-      'url': sticker.url.toString(),
+      'body': sticker.url,
+      'info': sticker.name,
+      'url': sticker.emoticon,
     };
     // send the sticker
     await room!.sendEvent(

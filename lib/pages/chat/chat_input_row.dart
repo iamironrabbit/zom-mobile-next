@@ -1,15 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:animations/animations.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:keyboard_shortcuts/keyboard_shortcuts.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:keyboard_shortcuts/keyboard_shortcuts.dart';
+import 'package:matrix/matrix.dart';
+
 import '../../widgets/m2_popup_menu_button.dart';
 import 'chat.dart';
 import 'input_bar.dart';
@@ -145,21 +144,18 @@ class ChatInputRow extends StatelessWidget {
                             contentPadding: const EdgeInsets.all(0),
                           ),
                         ),
-                      if (controller.room!
-                          .getImagePacks(ImagePackUsage.sticker)
-                          .isNotEmpty)
-                        PopupMenuItem<String>(
-                          value: 'sticker',
-                          child: ListTile(
-                            leading: const CircleAvatar(
-                              backgroundColor: Colors.orange,
-                              foregroundColor: Colors.white,
-                              child: Icon(Icons.emoji_emotions_outlined),
-                            ),
-                            title: Text(L10n.of(context)!.sendSticker),
-                            contentPadding: const EdgeInsets.all(0),
+                      PopupMenuItem<String>(
+                        value: 'sticker',
+                        child: ListTile(
+                          leading: const CircleAvatar(
+                            backgroundColor: Colors.orange,
+                            foregroundColor: Colors.white,
+                            child: Icon(Icons.emoji_emotions_outlined),
                           ),
+                          title: Text(L10n.of(context)!.sendSticker),
+                          contentPadding: const EdgeInsets.all(0),
                         ),
+                      ),
                       if (PlatformInfos.isMobile)
                         PopupMenuItem<String>(
                           value: 'location',

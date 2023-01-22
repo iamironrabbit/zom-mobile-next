@@ -1,55 +1,51 @@
+import 'package:fluffychat/pages/sticker/sticker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:matrix/matrix.dart';
 
-import '../../widgets/avatar.dart';
-import 'events/image_bubble.dart';
+import '../chat/events/image_bubble.dart';
 
-class StickerPickerDialog extends StatefulWidget {
+class CustomStickerPickerDialog extends StatefulWidget {
+  final Map<String, List<Sticker>> stickerMap;
   final Room room;
-
-  const StickerPickerDialog({required this.room, Key? key}) : super(key: key);
+  const CustomStickerPickerDialog(
+      {required this.stickerMap, required this.room, Key? key})
+      : super(key: key);
 
   @override
-  StickerPickerDialogState createState() => StickerPickerDialogState();
+  CustomStickerPickerDialogState createState() =>
+      CustomStickerPickerDialogState();
 }
 
-class StickerPickerDialogState extends State<StickerPickerDialog> {
+class CustomStickerPickerDialogState extends State<CustomStickerPickerDialog> {
   String? searchFilter;
 
   @override
   Widget build(BuildContext context) {
-    final stickerPacks = widget.room.getImagePacks(ImagePackUsage.sticker);
-    final packSlugs = stickerPacks.keys.toList();
-
+    //TODO: add await to wait for loading of sticker
+    final stickerPacks = widget.stickerMap;
+    final packSlugs = widget.stickerMap.keys.toList();
     // ignore: prefer_function_declarations_over_variables
     final packBuilder = (BuildContext context, int packIndex) {
       final pack = stickerPacks[packSlugs[packIndex]]!;
-      final filteredImagePackImageEntried = pack.images.entries.toList();
-      if (searchFilter?.isNotEmpty ?? false) {
-        filteredImagePackImageEntried.removeWhere((e) =>
-            !(e.key.toLowerCase().contains(searchFilter!.toLowerCase()) ||
-                (e.value.body
-                        ?.toLowerCase()
-                        .contains(searchFilter!.toLowerCase()) ??
-                    false)));
+      final filteredImagePackImageEntried = [];
+      for (final element in pack) {
+        filteredImagePackImageEntried.add(element.name);
       }
-      final imageKeys =
-          filteredImagePackImageEntried.map((e) => e.key).toList();
+      if (searchFilter?.isNotEmpty ?? false) {
+        filteredImagePackImageEntried.removeWhere(
+            (e) => !e.toLowerCase().contains(searchFilter!.toLowerCase()));
+      }
+      final imageKeys = filteredImagePackImageEntried;
       if (imageKeys.isEmpty) {
         return Container();
       }
-      final packName = pack.pack.displayName ?? packSlugs[packIndex];
+      final packName = packSlugs[packIndex];
       return Column(
         children: <Widget>[
           if (packIndex != 0) const SizedBox(height: 20),
           if (packName != 'user')
             ListTile(
-              leading: Avatar(
-                mxContent: pack.pack.avatarUrl,
-                name: packName,
-                client: widget.room.client,
-              ),
               title: Text(packName),
             ),
           const SizedBox(height: 6),
@@ -60,12 +56,12 @@ class StickerPickerDialogState extends State<StickerPickerDialog> {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int imageIndex) {
-              final image = pack.images[imageKeys[imageIndex]]!;
+              final image = pack[imageIndex];
               final fakeEvent = Event(
                 type: EventTypes.Sticker,
                 content: {
-                  'url': image.url.toString(),
-                  'info': image.info,
+                  'url': image.url,
+                  'info': image.emoticon,
                 },
                 originServerTs: DateTime.now(),
                 room: widget.room,
@@ -73,15 +69,11 @@ class StickerPickerDialogState extends State<StickerPickerDialog> {
                 senderId: widget.room.client.userID!,
               );
               return InkWell(
-                key: ValueKey(image.url.toString()),
+                key: ValueKey(image.emoticon),
                 onTap: () {
                   // copy the image
-                  final imageCopy =
-                      ImagePackImageContent.fromJson(image.toJson().copy());
-                  // set the body, if it doesn't exist, to the key
-                  imageCopy.body ??= imageKeys[imageIndex];
-                  Navigator.of(context, rootNavigator: false)
-                      .pop<ImagePackImageContent>(imageCopy);
+                  //final imageCopy = image.toString();
+                  Navigator.of(context, rootNavigator: false).pop(image);
                 },
                 child: AbsorbPointer(
                   absorbing: true,

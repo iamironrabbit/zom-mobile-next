@@ -300,4 +300,10 @@ class MatrixLocals extends MatrixLocalizations {
 
   @override
   String youUnbannedUser(String targetName) => l10n.youUnbannedUser(targetName);
+
+  @override
+  String wasDirectChatDisplayName(String oldDisplayName) {
+    // TODO: implement wasDirectChatDisplayName
+    throw UnimplementedError();
+  }
 }

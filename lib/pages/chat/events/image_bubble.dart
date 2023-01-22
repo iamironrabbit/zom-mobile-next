@@ -1,11 +1,7 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_blurhash/flutter_blurhash.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pages/image_viewer/image_viewer.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/widgets/mxc_image.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class ImageBubble extends StatelessWidget {
   final Event event;
@@ -32,38 +28,6 @@ class ImageBubble extends StatelessWidget {
     this.onTap,
     Key? key,
   }) : super(key: key);
-
-  Widget _buildPlaceholder(BuildContext context) {
-    if (event.messageType == MessageTypes.Sticker) {
-      return const Center(
-        child: CircularProgressIndicator.adaptive(),
-      );
-    }
-    final String blurHashString =
-        event.infoMap['xyz.amorgan.blurhash'] is String
-            ? event.infoMap['xyz.amorgan.blurhash']
-            : 'LEHV6nWB2yk8pyo0adR*.7kCMdnj';
-    final ratio = event.infoMap['w'] is int && event.infoMap['h'] is int
-        ? event.infoMap['w'] / event.infoMap['h']
-        : 1.0;
-    var width = 32;
-    var height = 32;
-    if (ratio > 1.0) {
-      height = (width / ratio).round();
-    } else {
-      width = (height * ratio).round();
-    }
-    return SizedBox(
-      width: this.width,
-      height: this.height,
-      child: BlurHash(
-        hash: blurHashString,
-        decodingWidth: width,
-        decodingHeight: height,
-        imageFit: fit,
-      ),
-    );
-  }
 
   void _onTap(BuildContext context) {
     if (onTap != null) {
@@ -93,15 +57,7 @@ class ImageBubble extends StatelessWidget {
                     maxHeight: height,
                   )
                 : null,
-            child: MxcImage(
-              event: event,
-              width: width,
-              height: height,
-              fit: fit,
-              animated: animated,
-              isThumbnail: thumbnailOnly,
-              placeholder: _buildPlaceholder,
-            ),
+            child: Image.asset(event.content['body']),
           ),
         ),
       ),

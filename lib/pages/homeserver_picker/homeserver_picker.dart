@@ -1,10 +1,15 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:file_picker_cross/file_picker_cross.dart';
+import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pages/homeserver_picker/homeserver_bottom_sheet.dart';
+import 'package:fluffychat/pages/homeserver_picker/homeserver_picker_view.dart';
+import 'package:fluffychat/utils/tor_stub.dart'
+    if (dart.library.html) 'package:tor_detector_web/tor_detector_web.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:future_loading_dialog/future_loading_dialog.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -12,14 +17,7 @@ import 'package:matrix/matrix.dart';
 import 'package:matrix_homeserver_recommendations/matrix_homeserver_recommendations.dart';
 import 'package:vrouter/vrouter.dart';
 
-import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pages/homeserver_picker/homeserver_bottom_sheet.dart';
-import 'package:fluffychat/pages/homeserver_picker/homeserver_picker_view.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 import '../../utils/localized_exception_extension.dart';
-
-import 'package:fluffychat/utils/tor_stub.dart'
-    if (dart.library.html) 'package:tor_detector_web/tor_detector_web.dart';
 
 class HomeserverPicker extends StatefulWidget {
   const HomeserverPicker({Key? key}) : super(key: key);

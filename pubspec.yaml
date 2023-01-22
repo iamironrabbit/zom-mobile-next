@@ -113,6 +113,9 @@ flutter:
   assets:
     - assets/
     - assets/sounds/
+    - assets/stickers/
+    - assets/stickers/aloha/
+    - assets/stickers/alohaa/
     - assets/js/
     - assets/js/package/
 

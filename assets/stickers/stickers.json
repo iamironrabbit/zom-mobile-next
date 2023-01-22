@@ -1,0 +1,60 @@
+{
+  "packs": [
+    {
+    "category": "aloha",
+    "stickers": [{
+      "name": "image_action",
+      "category": "aloha",
+      "emoticon": ":aloha-image_action:",
+      "url": "assets/stickers/aloha/image_action.png"
+    },
+      {
+        "name": "image_friend",
+        "category": "aloha",
+        "emoticon": ":aloha-image_friend:",
+        "url": "assets/stickers/aloha/image_friend.png"
+      },
+      {
+        "name": "image_success",
+        "category": "aloha",
+        "emoticon": ":aloha-image_success:",
+        "url": "assets/stickers/aloha/image_success.png"
+      },
+      {
+        "name": "image_waiting",
+        "category": "aloha",
+        "emoticon": ":aloha-image_waiting:",
+        "url": "assets/stickers/aloha/image_waiting.png"
+      }
+    ]
+  },
+    {
+      "category": "alohaa",
+      "stickers": [{
+        "name": "image_action",
+        "category": "alohaa",
+        "emoticon": ":alohaa-image_action:",
+        "url": "assets/stickers/alohaa/image_action.png"
+      },
+        {
+          "name": "image_friend",
+          "category": "alohaa",
+          "emoticon": ":alohaa-image_friend:",
+          "url": "assets/stickers/alohaa/image_friend.png"
+        },
+        {
+          "name": "image_success",
+          "category": "alohaa",
+          "emoticon": ":alohaa-image_success:",
+          "url": "assets/stickers/alohaa/image_success.png"
+        },
+        {
+          "name": "image_waiting",
+          "category": "alohaa",
+          "emoticon": ":alohaa-image_waiting:",
+          "url": "assets/stickers/alohaa/image_waiting.png"
+        }
+      ]
+    }
+  ]
+}
