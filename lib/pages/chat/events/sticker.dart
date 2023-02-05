@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:matrix/matrix.dart';
 
@@ -25,6 +24,7 @@ class StickerState extends State<Sticker> {
       widget.event,
       width: 400,
       height: 400,
+      backgroundColor: Colors.white,
       fit: BoxFit.contain,
       onTap: () {
         setState(() => animated = true);

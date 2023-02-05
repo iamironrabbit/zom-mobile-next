@@ -57,11 +57,12 @@ class CustomStickerPickerDialogState extends State<CustomStickerPickerDialog> {
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int imageIndex) {
               final image = pack[imageIndex];
-              final fakeEvent = Event(
-                type: EventTypes.Sticker,
+              final stickerEvent = Event(
+                type: EventTypes.Message,
                 content: {
                   'url': image.url,
-                  'info': image.emoticon,
+                  'body': image.emoticon,
+                  'msgtype': MessageTypes.Text,
                 },
                 originServerTs: DateTime.now(),
                 room: widget.room,
@@ -78,7 +79,7 @@ class CustomStickerPickerDialogState extends State<CustomStickerPickerDialog> {
                 child: AbsorbPointer(
                   absorbing: true,
                   child: ImageBubble(
-                    fakeEvent,
+                    stickerEvent,
                     tapToView: false,
                     fit: BoxFit.contain,
                     width: 100,

@@ -51,16 +51,28 @@ class ImageBubble extends StatelessWidget {
         child: AnimatedSwitcher(
           duration: const Duration(milliseconds: 1000),
           child: Container(
+            color: backgroundColor,
             constraints: maxSize
                 ? BoxConstraints(
                     maxWidth: width,
                     maxHeight: height,
                   )
                 : null,
-            child: Image.asset(event.content['body']),
+            child: Image.asset(_setImage(event)),
           ),
         ),
       ),
     );
+  }
+
+  String _setImage(Event event) {
+    final String imageUrl = event.content['url'];
+    final bool start = imageUrl.startsWith(":");
+    final bool end = imageUrl.endsWith(":");
+    if (start && end) {
+      return event.content['body'];
+    } else {
+      return event.content['url'];
+    }
   }
 }

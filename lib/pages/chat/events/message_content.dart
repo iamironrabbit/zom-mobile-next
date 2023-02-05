@@ -1,14 +1,13 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:matrix/matrix.dart';
-import 'package:matrix_link_text/link_text.dart';
-
 import 'package:fluffychat/pages/chat/events/video_player.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions.dart/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:matrix/matrix.dart';
+import 'package:matrix_link_text/link_text.dart';
+
 import '../../../config/app_config.dart';
 import '../../../utils/platform_infos.dart';
 import '../../../utils/url_launcher.dart';
@@ -154,9 +153,22 @@ class MessageContent extends StatelessWidget {
                 room: event.room,
                 emoteSize: bigEmotes ? fontSize * 3 : fontSize * 1.5,
               );
+            } else {
+              if (event.content.isNotEmpty) {
+                final String imageUrl = event.content['body'];
+                final bool start = imageUrl.startsWith(":");
+                final bool end = imageUrl.endsWith(":");
+                if (start && end) {
+                  return Sticker(event);
+                } else {
+                  continue textmessage;
+                }
+              } else {
+                continue textmessage;
+              }
             }
-            // else we fall through to the normal message rendering
-            continue textmessage;
+          // else we fall through to the normal message rendering
+
           case MessageTypes.BadEncrypted:
           case EventTypes.Encrypted:
             return _ButtonContent(

@@ -398,10 +398,10 @@ class ChatController extends State<Chat> {
       'info': sticker.name,
       'url': sticker.emoticon,
     };
-    // send the sticker
+    // send the custom sticker
     await room!.sendEvent(
       eventContent,
-      type: EventTypes.Sticker,
+      type: EventTypes.Message,
     );
   }
 

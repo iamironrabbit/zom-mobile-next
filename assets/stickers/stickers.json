@@ -5,26 +5,26 @@
     "stickers": [{
       "name": "image_action",
       "category": "aloha",
-      "emoticon": ":aloha-image_action:",
-      "url": "assets/stickers/aloha/image_action.png"
+      "emoticon": "assets/stickers/aloha/image_action.png",
+      "url": ":aloha-image_action:"
     },
       {
         "name": "image_friend",
         "category": "aloha",
-        "emoticon": ":aloha-image_friend:",
-        "url": "assets/stickers/aloha/image_friend.png"
+        "url": ":aloha-image_friend:",
+        "emoticon": "assets/stickers/aloha/image_friend.png"
       },
       {
         "name": "image_success",
         "category": "aloha",
-        "emoticon": ":aloha-image_success:",
-        "url": "assets/stickers/aloha/image_success.png"
+        "url": ":aloha-image_success:",
+        "emoticon": "assets/stickers/aloha/image_success.png"
       },
       {
         "name": "image_waiting",
         "category": "aloha",
-        "emoticon": ":aloha-image_waiting:",
-        "url": "assets/stickers/aloha/image_waiting.png"
+        "url": ":aloha-image_waiting:",
+        "emoticon": "assets/stickers/aloha/image_waiting.png"
       }
     ]
   },
@@ -33,26 +33,26 @@
       "stickers": [{
         "name": "image_action",
         "category": "alohaa",
-        "emoticon": ":alohaa-image_action:",
-        "url": "assets/stickers/alohaa/image_action.png"
+        "url": ":alohaa-image_action:",
+        "emoticon": "assets/stickers/alohaa/image_action.png"
       },
         {
           "name": "image_friend",
           "category": "alohaa",
-          "emoticon": ":alohaa-image_friend:",
-          "url": "assets/stickers/alohaa/image_friend.png"
+          "url": ":alohaa-image_friend:",
+          "emoticon": "assets/stickers/alohaa/image_friend.png"
         },
         {
           "name": "image_success",
           "category": "alohaa",
-          "emoticon": ":alohaa-image_success:",
-          "url": "assets/stickers/alohaa/image_success.png"
+          "url": ":alohaa-image_success:",
+          "emoticon": "assets/stickers/alohaa/image_success.png"
         },
         {
           "name": "image_waiting",
           "category": "alohaa",
-          "emoticon": ":alohaa-image_waiting:",
-          "url": "assets/stickers/alohaa/image_waiting.png"
+          "url": ":alohaa-image_waiting:",
+          "emoticon": "assets/stickers/alohaa/image_waiting.png"
         }
       ]
     }
