@@ -151,7 +151,7 @@
   "@commandInvalid": {
     "type": "text"
   },
-  "commandMissing": "{{command} විධානයක් නොවේ.",
+  "commandMissing": "{command} විධානයක් නොවේ.",
   "@commandMissing": {
     "type": "text",
     "placeholders": {
